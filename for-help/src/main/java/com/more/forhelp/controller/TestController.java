@@ -4,7 +4,6 @@ import com.more.forhelp.entity.User;
 import com.more.forhelp.mapper.UserMapper;
 import com.more.forhelp.until.SnowFlakeUntil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
