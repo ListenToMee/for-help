@@ -2,7 +2,9 @@ package com.more.forhelp.until;
 
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
+@Component
 public class SnowFlakeUntil {
     //机器ID  2进制5位  32位减掉1位 31个
     @Value("${snowFlake.workerId}")

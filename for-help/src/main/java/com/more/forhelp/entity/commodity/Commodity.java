@@ -1,6 +1,8 @@
 package com.more.forhelp.entity.commodity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -8,7 +10,7 @@ import java.math.BigDecimal;
 @Data
 public class Commodity {
 
-    @TableField(value = "id")
+    @TableId(value = "id", type = IdType.AUTO)
     private String id;
 
     @TableField(value = "commodityName")

@@ -54,9 +54,15 @@ spring:
 #        #deny: 192.168.1.100
 
 snowFlake:
-  workerId:1
-  datacenterId:1
-  sequence:1
+  workerId: 1
+  datacenterId: 1
+  sequence: 1
 
 mybatis-plus:
   map-underscore-to-camel-case: false
+
+sftp:
+  host: 82.157.140.170
+  port: 2294
+  username: foo
+  password: pass

@@ -13,7 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Component
 public class PlateFormAndActivityImpl implements PlateFormAndActivity {
@@ -60,6 +62,52 @@ public class PlateFormAndActivityImpl implements PlateFormAndActivity {
         }
 
         result.setData(list);
+        return result;
+    }
+
+    @Override
+    public Result<List<PlateFormVo>> getPlatformInfo() {
+        Result<List<PlateFormVo>> result = new Result();
+        try {
+            List<Platform> platforms = plateFormMapper.selectList(null);
+            List<PlateFormVo> list = new ArrayList<>();
+            platforms.forEach(platform -> {
+                PlateFormVo plateFormVo = new PlateFormVo();
+                plateFormVo.setText(platform.getPlatformName());
+                plateFormVo.setValue(platform.getPlatformCode());
+                list.add(plateFormVo);
+            });
+            result.setData(list);
+        } catch (Exception e) {
+            System.out.println(e);
+            result.setCode(000);
+            result.setMsg("服务端异常");
+            return result;
+        }
+        return result;
+    }
+
+    @Override
+    public Result<List<ActivityVo>> getActivityInfo(String platformCode) {
+        Result<List<ActivityVo>> result = new Result();
+        try {
+            Map<String,Object> param = new HashMap<>();
+            param.put("platformCode",platformCode);
+            List<Activity> activities = activityMapper.selectByMap(param);
+            List<ActivityVo> list = new ArrayList<>();
+            activities.forEach(activity -> {
+                ActivityVo activityVo = new ActivityVo();
+                activityVo.setText(activity.getActivityName());
+                activityVo.setValue(activity.getActivityCode());
+                list.add(activityVo);
+            });
+            result.setData(list);
+        } catch (Exception e) {
+            System.out.println(e);
+            result.setCode(000);
+            result.setMsg("服务端异常");
+            return result;
+        }
         return result;
     }
 }
