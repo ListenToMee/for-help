@@ -4,6 +4,10 @@ server:
     context-path: /for-help
 
 spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
   datasource:
     #1.JDBC
     type: com.alibaba.druid.pool.DruidDataSource
@@ -66,3 +70,7 @@ sftp:
   port: 2294
   username: foo
   password: pass
+
+RSA:
+  publicKey: MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCfmgrn/Ev2KVZWSSEY21Mbb43ArUoCgY+dHGpnWXAZhgf1u7u40sM20ZivgBD7cj8u4pfxVdhL68sthSc/8i+RIKbQbMrJCKOEQ5M07Fb5VwuWGcsRDUGmCVx0IovWT9+0Visb1aT3H8oZeA50IfCUYi+XTqkt2SOsNISwE6FZ9QIDAQAB
+  privateKey: MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBAJ+aCuf8S/YpVlZJIRjbUxtvjcCtSgKBj50camdZcBmGB/W7u7jSwzbRmK+AEPtyPy7il/FV2Evryy2FJz/yL5EgptBsyskIo4RDkzTsVvlXC5YZyxENQaYJXHQii9ZP37RWKxvVpPcfyhl4DnQh8JRiL5dOqS3ZI6w0hLAToVn1AgMBAAECgYEAleyDUDatOJjONJHPmGT25a/dzeA6xK3mNWTrAxh9+EvykECA7/Z0ULuFHV9FFJ7WgXlz182XOIJQQvtwyl37lWpobEjimCCEGPM2v7nOByullXmGOO8vcelVbTnzyx8vldwJVJrmPbSy60PP4c0qVAFT3hCCwI/KEHV4k8DOCmUCQQD2yP0rdagbwt1qyJYy4z95DC8zsCFefIhiP05RpKT26PYCLEoekOoTRG2vZHM3pZIFBYfjU3fRiZcnU/ZPQUn/AkEApY+royy2sRJDUu56R0X4zydFiTi6l2k3UJkgWKKs6rkncboLvm0/wYg8pAuMIuRDo4t1ngWHlCno8Ree7XTUCwJACuitkEs+KCQAB6VgRlWXS7GHMKC7iOK2YKltu9wsUqHPph7xE9LSFhHzS0qEcVRHVSN+c0UQSdnsLZffjndTXwJAWX/FJTyyth5NTrOkXosw6astJ/UGyXsTb/qXRdMK7wiQjiYo2xRr9s8TGQs1AlerSOnG91m95RaS2mIOhAc36QJBAMBsK+HiirrfPAHciI4Ab5p8PqHYkw6+JWp0nYPSqoFAiZjMelt4lZzR5t6gNEdPAshxZIbGqkrPnFO4rTNhMn4=

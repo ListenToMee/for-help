@@ -33,8 +33,7 @@ public class CommodityServiceImpl implements CommodityService {
     @Autowired
     SnowFlakeUntil snowFlakeUntil;
 
-    @Autowired
-    SFTPUtil sftpUtil;
+
 
     @Override
     public Result<List<CommodityVo>> getCommodityInfo(String param) {
@@ -80,6 +79,7 @@ public class CommodityServiceImpl implements CommodityService {
             String oldName = param.getOriginalFilename();
             String newName = fileKey+oldName.substring(oldName.indexOf("."));
             // 上传图片到sftp服务器
+            SFTPUtil sftpUtil = new SFTPUtil();
             sftpUtil.login();
             sftpUtil.upload("/upload/cmmdty",newName,param.getInputStream());
             sftpUtil.logout();
@@ -98,6 +98,7 @@ public class CommodityServiceImpl implements CommodityService {
         try {
             String dict = url.substring(0,url.lastIndexOf("/")+1);
             String name = url.substring(url.lastIndexOf("/")-1);
+            SFTPUtil sftpUtil = new SFTPUtil();
             sftpUtil.login();
             sftpUtil.delete(dict,name);
             sftpUtil.logout();
@@ -123,6 +124,7 @@ public class CommodityServiceImpl implements CommodityService {
 
     @Override
     public void readImg(HttpServletRequest request, HttpServletResponse response) {
+        SFTPUtil sftpUtil = new SFTPUtil();
         try {
             String path = request.getParameter("url");
             sftpUtil.login();

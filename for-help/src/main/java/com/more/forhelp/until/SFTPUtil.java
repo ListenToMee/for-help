@@ -1,35 +1,33 @@
 package com.more.forhelp.until;
 
 import com.jcraft.jsch.*;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 
 import java.io.*;
 import java.util.Properties;
 import java.util.Vector;
 
-@Component
 public class SFTPUtil {
 
     private ChannelSftp sftp;
 
     private Session session;
     /** FTP 登录用户名*/
-    @Value("${sftp.username}")
-    private String username="";
+    private String username="foo";
     /** FTP 登录密码*/
-    @Value("${sftp.password}")
-    private String password;
+    private String password="pass";
     /** 私钥 */
     private String privateKey;
     /** FTP 服务器地址IP地址*/
-    @Value("${sftp.host}")
-    private String host;
+    private String host="82.157.140.170";
     /** FTP 端口*/
-    @Value("${sftp.port}")
-    private int port;
+    private int port=2294;
 
-    public SFTPUtil(){}
+    public SFTPUtil(){
+        this.username=BaseConfig.getUsername();
+        this.password=BaseConfig.getPassword();
+        this.host=BaseConfig.getHost();
+        this.port=BaseConfig.getPort();
+    }
 
     /**
      * 连接sftp服务器
